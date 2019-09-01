@@ -1,0 +1,9 @@
+[submodule "CSharp.Data.Client"]
+	path = CSharp.Data.Client
+	url = https://github.com/vinils/CSharp.Data.Client
+[submodule "CSharp.Data.Service"]
+	path = CSharp.Data.Service
+	url = https://github.com/vinils/CSharp.Data.Service
+[submodule "SQL.DataDW"]
+	path = SQL.DataDW
+	url = https://github.com/vinils/SQL.DataDW

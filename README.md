@@ -1,4 +1,5 @@
 # Data
 Data Project
 
-doocker-compose up -d
+clone: git clone --recurse-submodules https://github.com/vinils/CSharp.Saude.FitbitTask.git
+run: doocker-compose up -d

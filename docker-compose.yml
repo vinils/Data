@@ -16,8 +16,11 @@ services:
         ports:
             - "1433:1433"
         environment:
-            sa_password: "Senh@123"
-            ACCEPT_EULA: "Y"
+            - sa_password=Senh@123
+            - ACCEPT_EULA=Y
+            - attach_dbs=[{'dbName':'DataContext','dbFiles':['C:\\temp\\DataContext.mdf','C:\\temp\\DataContext_log.ldf']}]
+        volumes:
+            - C:/temp/:C:/temp/
     dbdw:
         build: ./SQL.DataDW/.
         container_name: data_dbdw

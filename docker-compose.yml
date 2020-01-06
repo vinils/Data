@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-    app:
-        build: ./CSharp.Data.Service/.
-        container_name: data_app
-        ports:
-            - "8002:80"
-        depends_on:
-            - dbdata
-        environment:
-            DataContext: "Persist Security Info=False;User ID=sa;Password=Senh@123;Data Source=dbdata,1433;MultipleActiveResultSets=True; Initial Catalog=DataContext"
     dbdata:
         image: "vinils/mssql-server-windows-developer"
         container_name: data_db
@@ -26,6 +17,8 @@ services:
         container_name: data_dbdw
         ports:
             - "1533:1433"
+        depends_on:
+            - dbdata
         environment:
             sa_password: "Senh@124"
             ACCEPT_EULA: "Y"

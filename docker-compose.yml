@@ -11,18 +11,15 @@ services:
             - ACCEPT_EULA=Y
             - attach_dbs=[{'dbName':'DataContext','dbFiles':['C:\\temp\\DataContext.mdf','C:\\temp\\DataContext_log.ldf']}]
         volumes:
-            - C:/temp/:C:/temp/
+            - C:/temp/:C:/temp/:rw
     dbdw:
         build: ./SQL.DataDW/.
         container_name: data_dbdw
         ports:
             - "1533:1433"
-        depends_on:
-            - dbdata
         environment:
             sa_password: "Senh@124"
             ACCEPT_EULA: "Y"
-            MSSQL_AGENT_ENABLED: "true"
             start_date: "2005-01-01"
             end_date: "2022-12-31"
             currentDb: dbdw

@@ -7,4 +7,4 @@ git submodule update --init
 git submodule update --remote  
   
 Execute:  
-doocker-compose up -d
+docker-compose up -d

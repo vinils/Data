@@ -1,0 +1,32 @@
+version: '3'
+#docker run -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e SA_PASSWORD=StrongP@ssword! -e MSSQL_AGENT_ENABLED=true -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CTP3.2-ubuntu
+
+services:
+    dbdata:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        container_name: data_db
+        ports:
+            - "1433:1433"
+        environment:
+            - SA_PASSWORD=Senh@123
+            - ACCEPT_EULA=Y
+            - MSSQL_PID=Developer
+        volumes:
+            - /home/docker/sqlbkp/:/sqlbkp:rw
+    dbdw:
+        build:
+            context: ./SQL.DataDW
+            dockerfile: ./linux.docker
+        container_name: data_dbdw
+        ports:
+            - "1533:1433"
+        environment:
+            - MSSQL_PID=Developer
+            - SA_PASSWORD=Senh@124
+            - ACCEPT_EULA=Y
+            - MSSQL_AGENT_ENABLED=true
+            - start_date=2005-01-01
+            - end_date=2022-12-31
+            - currentDb=dbdw
+            - dataContextDb=dbdata
+            - dataContextPassword=Senh@123

@@ -1,0 +1,1 @@
+docker exec -it data_db /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Senh@123 -Q "RESTORE DATABASE DataContext FROM DISK = '/sqlbkp/DataContext_latest.bak' WITH MOVE 'DataContext' TO '/var/opt/mssql/data/DataContext.mdf', MOVE 'DataContext_Log' TO '/var/opt/mssql/data/DataContext_log.ldf'"
